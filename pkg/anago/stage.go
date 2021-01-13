@@ -363,11 +363,6 @@ func (d *DefaultStage) TagRepository() error {
 					return errors.Wrapf(err, "checkout %s branch", git.DefaultBranch)
 				}
 			}
-		} else {
-			logrus.Infof("Checking out branch %s", d.options.ReleaseBranch)
-			if err := d.impl.Checkout(repo, d.options.ReleaseBranch); err != nil {
-				return errors.Wrapf(err, "checking out branch %s", d.options.ReleaseBranch)
-			}
 		}
 
 		// `branch == ""` in case we checked out a commit directly, which is

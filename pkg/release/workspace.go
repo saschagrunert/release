@@ -37,7 +37,7 @@ func PrepareWorkspaceStage(directory string) error {
 	logrus.Infof("Preparing workspace for staging in %s", directory)
 	logrus.Infof("Cloning repository to %s", directory)
 	repo, err := git.CloneOrOpenGitHubRepo(
-		directory, git.DefaultGithubOrg, git.DefaultGithubRepo, false,
+		directory, "hasheddan", git.DefaultGithubRepo, false,
 	)
 	if err != nil {
 		return errors.Wrap(err, "clone k/k repository")
@@ -55,6 +55,10 @@ func PrepareWorkspaceStage(directory string) error {
 		Path:   filepath.Join(git.DefaultGithubOrg, git.DefaultGithubRepo),
 	}).String()); err != nil {
 		return errors.Wrap(err, "changing git remote of repository")
+	}
+
+	if err := repo.Checkout("conformance-platforms"); err != nil {
+		return errors.Wrap(err, "unable to checkout branch")
 	}
 
 	return nil
