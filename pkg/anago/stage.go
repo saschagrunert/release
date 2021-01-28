@@ -363,11 +363,6 @@ func (d *DefaultStage) TagRepository() error {
 					return errors.Wrapf(err, "checkout %s branch", git.DefaultBranch)
 				}
 			}
-		} else {
-			logrus.Infof("Checking out branch %s", d.options.ReleaseBranch)
-			if err := d.impl.Checkout(repo, d.options.ReleaseBranch); err != nil {
-				return errors.Wrapf(err, "checking out branch %s", d.options.ReleaseBranch)
-			}
 		}
 
 		// `branch == ""` in case we checked out a commit directly, which is
@@ -417,16 +412,6 @@ func (d *DefaultStage) TagRepository() error {
 			}
 		}
 
-		// If we are on master/main we do not create an empty commit,
-		// but we detach the head at the specified commit to avoid having
-		// commits merged between the BuildVersion commit and the tag:
-		if branch != "" && !strings.HasPrefix(branch, "release-") {
-			logrus.Infof("Detaching HEAD at commit %s to create tag %s", commit, version)
-			if err := d.impl.Checkout(repo, commit); err != nil {
-				return errors.Wrap(err, "checkout release commit")
-			}
-		}
-
 		// Tag the repository:
 		logrus.Infof("Tagging version %s", version)
 		if err := d.impl.Tag(
@@ -437,17 +422,6 @@ func (d *DefaultStage) TagRepository() error {
 			),
 		); err != nil {
 			return errors.Wrap(err, "tag version")
-		}
-
-		// if we are working on master/main at this point, we are in
-		// detached HEAD state. So we checkout the branch again.
-		// The next stage (build) will checkout the branch it needs, but
-		// let's not end this step with a detached HEAD
-		if branch != "" && !strings.HasPrefix(branch, "release-") {
-			logrus.Infof("Checking out %s to reattach HEAD", d.options.ReleaseBranch)
-			if err := d.impl.Checkout(repo, d.options.ReleaseBranch); err != nil {
-				return errors.Wrapf(err, "checking out branch %s", d.options.ReleaseBranch)
-			}
 		}
 	}
 	return nil
