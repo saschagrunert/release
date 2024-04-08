@@ -40,7 +40,7 @@ require (
 	gopkg.in/yaml.v2 v2.4.0
 	k8s.io/apimachinery v0.29.3
 	sigs.k8s.io/bom v0.6.0
-	sigs.k8s.io/mdtoc v1.2.2
+	sigs.k8s.io/mdtoc v1.3.0
 	sigs.k8s.io/promo-tools/v3 v3.6.0
 	sigs.k8s.io/release-sdk v0.11.0
 	sigs.k8s.io/release-utils v0.8.0
