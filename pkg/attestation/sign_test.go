@@ -434,6 +434,7 @@ func TestSignFilesInPlace(t *testing.T) {
 		_, err := sut.SignFilesInPlace([]string{"a.json"})
 		require.ErrorIs(t, err, errTest)
 	})
+}
 
 func TestReadBundle(t *testing.T) {
 	t.Parallel()
