@@ -890,6 +890,8 @@ github.com/shurcooL/graphql v0.0.0-20230722043721-ed46e5a46466 h1:17JxqqJY66GmZV
 github.com/shurcooL/graphql v0.0.0-20230722043721-ed46e5a46466/go.mod h1:9dIRpgIY7hVhoqfe0/FcYp0bpInZaT7dc3BYOprrIUE=
 github.com/sigstore/cosign/v2 v2.6.5 h1:D7kFSWS2HzfD+LpEuBO89D1KfOAODlkWuuhzXS8yzi0=
 github.com/sigstore/cosign/v2 v2.6.5/go.mod h1:g+P/LgYyJkC85WGGDho7yySl3C6xTJzzpLm21ZV+E6s=
+github.com/sigstore/cosign/v3 v3.1.3 h1:001JQRI/PJ/5T+g/kJ1KTvKFbb322+fomc+pHDZ/6sg=
+github.com/sigstore/cosign/v3 v3.1.3/go.mod h1:DmjtYkWDMdbG26X+QSOPB6QQGkLjRjQCIxxNs6wV6bA=
 github.com/sigstore/fulcio v1.8.8 h1:AtVoVQ4R7YaP6RHIH9puHyB398CHS/9WYc6d+gKf5Y0=
 github.com/sigstore/fulcio v1.8.8/go.mod h1:RaFomAGGM7VZKAR9ZGqQhcf1Peryc9E1020/kbX8Uto=
 github.com/sigstore/protobuf-specs v0.5.2 h1:RSWWUY8QrVTxbYH00jY/jg2e7YnjzrpwP+PeHTMll0E=
